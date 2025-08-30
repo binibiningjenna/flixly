@@ -1,0 +1,42 @@
+/* Font imports */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* Root variables */
+:root {
+  --primaryFont: "Poppins", sans-serif;
+  --darkColor: #101010;
+  --lightColor: #f5f3f3;
+}
+
+/* Body styling */
+body {
+  font-family: var(--primaryFont);
+  font-size: 0.9rem;
+  color: var(--lightColor);
+  background-color: var(--darkColor);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darkColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lightColor);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lightColor);
+}
+
+/* Media query adjustments for small screens */
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 0.8rem;
+  }
+}

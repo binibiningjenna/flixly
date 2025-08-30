@@ -1,0 +1,61 @@
+.heading {
+  font-size: 3.5rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.subheading {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.btn {
+  font-size: 0.9rem;
+  color: var(--darkColor);
+  text-transform: capitalize;
+  font-weight: 500;
+  padding: 0.3rem 1.2rem;
+  border: 2px solid var(--lightColor);
+  border-radius: 20px;
+  background-color: var(--lightColor);
+}
+
+.btn-primary {
+  --bs-btn-hover-bg: var(--darkColor);
+  --bs-btn-hover-color: var(--lightColor);
+  --bs-btn-hover-border-color: var(--lightColor);
+  --bs-btn-active-bg: var(--darkColor);
+  --bs-btn-active-color: var(--lightColor);
+  --bs-btn-active-border-color: var(--lightColor);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--lightColor);
+  border-width: 2px;
+  box-shadow: none !important;
+}
+
+.navbar-custom {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar-scrolled {
+  background-color: var(--darkColor)!important;
+  backdrop-filter: blur(6px);
+}
+
+.card {
+  background-color: var(--lightColor);
+}
+
+/* Responsive headings */
+@media screen and (max-width: 767px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .subheading {
+    font-size: 1.4rem;
+  }
+}
