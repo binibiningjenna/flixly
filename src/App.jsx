@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { createSession} from "./services/tmdb";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 

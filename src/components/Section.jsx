@@ -5,7 +5,7 @@ export default function Section({ title, items = [], filterOptions = null, defau
   const [visible, setVisible] = useState(defaultVisible);
 
   return (
-    <div className="my-5">
+    <div className="mt-5">
       <div className="d-flex justify-content-between">
         <div className="subheading d-flex align-items-center ps-3">{title}</div>
 

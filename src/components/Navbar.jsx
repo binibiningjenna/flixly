@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { getLoginUrl, getRequestToken } from "../services/tmdb";
 import "../styles/App.css";
 import Button from "./Button";
@@ -7,9 +8,26 @@ export default function Navbar() {
     const data = await getRequestToken();
 
     if (data.request_token) {
-      window.location.href = getLoginUrl();
+      const loginUrl = await getLoginUrl(data.request_token);
+      window.location.href = loginUrl;
     }
-  }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("navbar-scrolled", "text-dark");
+      } else {
+        navbar.classList.remove("navbar-scrolled", "text-dark");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top pt-4">
       <div className="container-fluid">

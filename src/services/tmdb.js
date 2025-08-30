@@ -43,3 +43,22 @@ export const fetchTrending = async (timeWindow = 'day') => {
     return data?.results ?? [];
 }
 
+export const fetchMovieGenre = async () => {
+    const data = await safeFetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
+    return data?.genres ?? [];
+}
+
+export const fetchMoviesByGenre = async (movieGenreId) => {
+    const data = await safeFetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${movieGenreId}`)
+    return data?.results ?? [];
+}
+
+export const fetchTvGenre = async () => {
+    const data = await safeFetch(`${BASE_URL}/genre/tv/list?api_key=${API_KEY}`);
+    return data?.genres ?? [];
+}
+
+export const fetchTvByGenre = async (tvGenreId) => {
+    const data = await safeFetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=${tvGenreId}`)
+    return data?.results ?? [];
+}
