@@ -1,11 +1,9 @@
 import Hero from "../components/Hero";
 import { useEffect, useState } from "react";
 import Section from "../components/Section";
-import { useFetchWithLoader } from "../utils/fetchWithLoader";
 import {fetchTrending, fetchMovieGenre, fetchMoviesByGenre, fetchTvGenre, fetchTvByGenre } from "../services/tmdb.js";
 
 export default function Home() {
-  const fetchWithLoader = useFetchWithLoader();
   const [trending, setTrending] = useState([]);
   const [timeWindow, setTimeWindow] = useState("day");
   const [movieGenre, setMovieGenre] = useState([]);
@@ -18,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     let active = true;
     async function loadTrending() {
-      const data = await fetchWithLoader(() => fetchTrending(timeWindow));
+      const data = await fetchTrending(timeWindow);
       if (active) setTrending(data);
     }
     loadTrending();
