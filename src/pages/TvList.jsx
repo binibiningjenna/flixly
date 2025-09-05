@@ -51,7 +51,7 @@ export default function TvList() {
         {genres.map((g) => (
           <Button
             key={g.id}
-            className="btn-primary"
+            className={selectedGenre === g.id ? 'active' : 'btn-primary'}
             onClick={() => {
               setSelectedGenre(g.id);
               setPage(1);

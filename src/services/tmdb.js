@@ -74,11 +74,14 @@ export const fetchAllMovies = async (page, genreId) => {
 };
 
 export const fetchAllTv = async (page, genreId) => {
-    const data = await safeFetch(
-        `${BASE_URL}/discover/tv?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`
-    );
+    const data = await safeFetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`);
     return {
         results: data?.results ?? [],
         totalPages: data?.total_pages ?? 1,
     };
 };
+
+export const searchMulti = async (query) => {
+    const data = await safeFetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+    return data?.results ?? [];
+}

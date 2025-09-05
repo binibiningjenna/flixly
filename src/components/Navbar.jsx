@@ -1,10 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getLoginUrl, getRequestToken } from "../services/tmdb";
 import "../styles/App.css";
 import Button from "./Button";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(!search.trim()) return;
+    navigate(`/?search=${encodeURIComponent(search)}`);
+  }
+  
   const handleLogin = async () => {
     const data = await getRequestToken();
 
@@ -49,9 +58,9 @@ export default function Navbar() {
         </div>
 
         <div className="d-flex align-items-center">
-          <form className="d-flex me-3" role="search">
+          <form className="d-flex me-3" role="search" onSubmit={handleSubmit}>
             <div className="input-group">
-              <input className="form-control" type="search" placeholder="Search movies..." aria-label="Search" />
+              <input className="form-control" type="search" placeholder="Search movies or Tv..." value={search} aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
               <button className="btn btn-primary" type="submit">
                 <i className="bi bi-search"></i>
               </button>

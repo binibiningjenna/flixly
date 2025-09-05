@@ -1,24 +1,24 @@
 import '../styles/App.css';
 import Button from '../components/Button.jsx'
 
-export default function Hero() {
+export default function Hero({ image, title, genre, duration, description, rating }) {
   return (
     <>
       <div className="container-fluid p-0 position-relative">
-        <img src="https://tse3.mm.bing.net/th/id/OIP.S4qjQW8ZTvRpW7rhRC5uEQHaDt?pid=Api&P=0&h=180" alt="Cover" className="w-100 vh-100 object-fit-cover" />
+        <img src={image} alt="Cover" className="w-100 vh-100 object-fit-cover" />
 
         <div className="position-absolute top-0 start-0 w-100 h-100" style={{ background: "linear-gradient(to bottom, #10101000 5%, #101010 100%)" }}></div>
 
         <div className="position-absolute top-50 start-0 translate-middle-y text-white px-5 col-12 col-md-6">
           <span className="mb-2">
-            <i className="bi bi-star-fill" style={{ color: "white" }}></i> 4.7
+            <i className="bi bi-star-fill" style={{ color: "white" }}></i> {rating}
           </span>
-          <h1 className="heading fw-bold">The Great Adventure</h1>
+          <h1 className="heading fw-bold">{title}</h1>
           <p className="mb-2">
-            <span className="me-3">ACTION | ADVENTURE</span>
-            <span>2h 15m</span>
+            <span className="me-3">{genre}</span>
+            <span>{duration}</span>
           </p>
-          <p className="d-lg-block d-none">Join the epic journey across mystical lands where heroes rise and legends are born...</p>
+          <p className="d-lg-block d-none">{description}</p>
           <div className="mt-3">
             <Button className="btn-primary me-2">▶ Watch Now</Button>
             <Button className="btn-primary">
