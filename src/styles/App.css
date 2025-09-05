@@ -30,9 +30,11 @@
   --bs-btn-active-border-color: var(--lightColor);
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus,
+.page-link:focus {
   border-color: var(--lightColor);
-  border-width: 2px;
+  border-width: 1px;
   box-shadow: none !important;
 }
 
@@ -41,12 +43,29 @@
 }
 
 .navbar-scrolled {
-  background-color: var(--darkColor)!important;
+  background-color: var(--darkColor) !important;
   backdrop-filter: blur(6px);
 }
 
 .card {
   background-color: var(--lightColor);
+}
+
+.page-link {
+  color: var(--darkColor) !important;
+}
+
+.page-link:hover {
+  color: var(--darkColor);
+  background-color: var(--lightColor);
+  border-color: var(--darkColor); 
+}
+
+.page-item.active .page-link {
+  color: var(--lightColor) !important;
+  background-color: var(--darkColor);
+  border-color: var(--lightColor) ; 
+  font-weight: bold;                        
 }
 
 /* Responsive headings */

@@ -1,7 +1,6 @@
-import { useState } from "react";
 import Card from "./Card";
 
-export default function Section({ title, items = [], filterOptions = null, defaultVisible = 6 }) {
+export default function Section({ title, items = [], filterOptions = null}) {
 
   return (
     <div className="mt-5">

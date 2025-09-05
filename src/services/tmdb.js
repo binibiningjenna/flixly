@@ -1,11 +1,11 @@
-const API_KEY = "";
+const API_KEY = "78612aadbf525a4827689965eb2b1fcf";
 const BASE_URL = "https://api.themoviedb.org/3";
 const REDIRECT_URL = "http://localhost:5173";
 
 const safeFetch = async (url) => {
     try {
         const response = await fetch(url);
-        if(!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+        if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
         return await response.json()
     } catch (error) {
         console.error("TMDB fetch error: ", error);
@@ -62,3 +62,23 @@ export const fetchTvByGenre = async (tvGenreId) => {
     const data = await safeFetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=${tvGenreId}`)
     return data?.results ?? [];
 }
+
+export const fetchAllMovies = async (page, genreId) => {
+    const data = await safeFetch(
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`
+    );
+    return {
+        results: data?.results ?? [],
+        totalPages: data?.total_pages ?? 1,
+    };
+};
+
+export const fetchAllTv = async (page, genreId) => {
+    const data = await safeFetch(
+        `${BASE_URL}/discover/tv?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`
+    );
+    return {
+        results: data?.results ?? [],
+        totalPages: data?.total_pages ?? 1,
+    };
+};

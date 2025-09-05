@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { getLoginUrl, getRequestToken } from "../services/tmdb";
 import "../styles/App.css";
 import Button from "./Button";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const handleLogin = async () => {
@@ -28,26 +29,22 @@ export default function Navbar() {
     };
   }, []);
 
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Movies", path: "/movies" },
+    { label: "TV Shows", path: "/tv" },
+  ];
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top pt-4">
       <div className="container-fluid">
         <div id="leftNav" className="flex-grow-1">
           <ul className="navbar-nav flex-row justify-content-center justify-content-lg-start mx-auto mx-lg-0 gap-3">
-            <li className="nav-item">
-              <a className="nav-link active" href="#">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Movies
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                TV Shows
-              </a>
-            </li>
+            {navItems.map((item) => (
+              <li className="nav-item" key={item.path}>
+                <NavLink to={item.path} className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}>{item.label}</NavLink>
+              </li>
+            ))}
           </ul>
         </div>
 

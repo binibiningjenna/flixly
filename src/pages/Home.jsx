@@ -109,7 +109,7 @@ export default function Home() {
         <div className="row">
           <div className="col my-4">
             <Section
-              title="TV"
+              title="TV Shows"
               items={tv.slice(0, 10)}
               layout="scroll"
               filterOptions={{
