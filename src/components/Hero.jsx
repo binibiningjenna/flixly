@@ -1,7 +1,10 @@
-import '../styles/App.css';
-import Button from '../components/Button.jsx'
+import "../styles/App.css";
+import Button from "../components/Button.jsx";
+import { useTrailer } from "../hooks/useTrailer.js";
 
-export default function Hero({ image, title, genre, duration, description, rating }) {
+export default function Hero({ image, title, genre, duration, description, rating, id, mediaType }) {
+  const { trailerKey, showModal, setShowModal, loadTrailer } = useTrailer();
+
   return (
     <>
       <div className="container-fluid p-0 position-relative">
@@ -20,13 +23,32 @@ export default function Hero({ image, title, genre, duration, description, ratin
           </p>
           <p className="d-lg-block d-none">{description}</p>
           <div className="mt-3">
-            <Button className="btn-primary me-2">▶ Watch Now</Button>
+            <Button className="btn-primary me-2" onClick={() => loadTrailer(id, mediaType)}>
+              ▶ Watch Now
+            </Button>
             <Button className="btn-primary">
               <i className="bi bi-plus-lg"></i> My List
             </Button>
           </div>
         </div>
       </div>
+
+      {showModal && trailerKey && (
+        <div className="modal fade show d-block" tabIndex="-1">
+          <div className="modal-dialog modal-lg modal-dialog-centered">
+            <div className="modal-content bg-black">
+              <div className="modal-header border-0">
+                <button className="btn-close btn-close-white" onClick={() => setShowModal(false)}></button>
+              </div>
+              <div className="modal-body p-0">
+                <div className="ratio ratio-16x9">
+                  <iframe src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`} title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -102,9 +102,10 @@ export default function Home() {
             image={`https://image.tmdb.org/t/p/original${topTrending.backdrop_path}`}
             title={topTrending.title || topTrending.name}
             genre={genreNames}
-            duration={topTrending.runtime ? `${topTrending.runtime} min` : ""}
             description={topTrending.overview}
             rating={topTrending.vote_average.toFixed(1)}
+            id={topTrending.id} 
+            mediaType={topTrending.media_type}
           />
         )}
       </div>
@@ -116,7 +117,15 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          searchQuery && <p className="text-center mt-5 fs-5">No results found for "<strong><em>{searchQuery}</em></strong>"</p>
+          searchQuery && (
+            <p className="text-center mt-5 fs-5">
+              No results found for "
+              <strong>
+                <em>{searchQuery}</em>
+              </strong>
+              "
+            </p>
+          )
         )}
       </div>
       <div className="container my-5">
@@ -144,6 +153,7 @@ export default function Home() {
             <Section
               title="Movies"
               items={movie.slice(0, 10)}
+              mediaType="movie"
               layout="scroll"
               filterOptions={{
                 options: movieGenre.map((movie) => ({ label: movie.name, value: movie.id })),
@@ -160,6 +170,7 @@ export default function Home() {
             <Section
               title="TV Shows"
               items={tv.slice(0, 10)}
+              mediaType="tv"
               layout="scroll"
               filterOptions={{
                 options: tvGenre.map((tv) => ({ label: tv.name, value: tv.id })),
