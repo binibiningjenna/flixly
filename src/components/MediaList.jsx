@@ -68,7 +68,7 @@ export default function MediaList({ title, fetchGenre, fetchItems, mediaType }) 
             year={mediaType === "movie" ? item.release_date?.split("-")[0] : item.first_air_date?.split("-")[0]} 
             image={item.poster_path}
             rating={item.vote_average.toFixed(1)}
-            link={`/${mediaType}/${item.id}`} />
+            link={`#/${mediaType}/${item.id}`} />
           </div>
         ))}
       </div>
