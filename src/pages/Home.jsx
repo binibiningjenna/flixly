@@ -99,7 +99,7 @@ export default function Home() {
       <div>
         {topTrending && (
           <Hero
-            image={`https://image.tmdb.org/t/p/original${topTrending.backdrop_path}`}
+            image={topTrending.backdrop_path ? `https://image.tmdb.org/t/p/original${topTrending.backdrop_path}` : "/no-image.jpg"}
             title={topTrending.title || topTrending.name}
             genre={genreNames}
             description={topTrending.overview}

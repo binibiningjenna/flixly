@@ -27,15 +27,19 @@ export default function MovieDetails() {
   }, [id]);
 
   if (!movie) {
-    return <div></div>;
+    return <div></div>; 
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" }, [id]);
+  });
 
   const genreNames = movie.genres?.map((g) => g.name.toUpperCase()).join(" | ");
 
   return (
     <>
       <Hero
-        image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        image={movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "/no-image.jpg"}
         title={movie.title}
         genre={genreNames}
         description={movie.overview}
