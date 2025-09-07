@@ -11,7 +11,7 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 export default function App() {
   return (
     <>
-      <Router>
+      <Router basename="/flixly">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
