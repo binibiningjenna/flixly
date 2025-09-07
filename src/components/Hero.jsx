@@ -24,10 +24,7 @@ export default function Hero({ image, title, genre, duration, description, ratin
           <p className="d-lg-block d-none">{description}</p>
           <div className="mt-3">
             <Button className="btn-primary me-2" onClick={() => loadTrailer(id, mediaType)}>
-              ▶ Watch Now
-            </Button>
-            <Button className="btn-primary">
-              <i className="bi bi-plus-lg"></i> My List
+              ▶ Watch Trailer
             </Button>
           </div>
         </div>
