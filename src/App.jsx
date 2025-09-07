@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import MoviesList from "./pages/MoviesList";
@@ -11,7 +11,7 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 export default function App() {
   return (
     <>
-      <Router basename="/flixly">
+      <Router>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
