@@ -26,20 +26,20 @@ export default function MovieDetails() {
     loadMovieSimilar();
   }, [id]);
 
-  if (!movie) {
-    return <div></div>; 
-  }
-
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" }, [id]);
-  });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [id]);
+
+  if (!movie) {
+    return <div></div>;
+  }
 
   const genreNames = movie.genres?.map((g) => g.name.toUpperCase()).join(" | ");
 
   return (
     <>
       <Hero
-        image={movie.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "/no-image.jpg"}
+        image={movie?.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : movie?.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : "/no-image.jpg"}
         title={movie.title}
         genre={genreNames}
         description={movie.overview}

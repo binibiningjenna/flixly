@@ -7,7 +7,7 @@ export default function Card({ title, year, image, link, rating }) {
     <>
       <a href={link} target="_self" className="text-decoration-none text-dark">
         <div className="card h-100 border-0 shadow-sm hover-card" style={{ maxWidth: "180px", fontSize: "0.85rem", cursor: "pointer" }}>
-          <img src={`${IMG_BASE}${image}`} className="card-img-top p-1 rounded-3" alt="Movie Cover" style={{ height: "220px", objectFit: "cover" }} />
+          <img src={image ? `${IMG_BASE}${image}` : "/no-image.jpg"} className="card-img-top p-1 rounded-3" alt="Movie Cover" style={{ height: "220px", objectFit: "cover" }} />
           <div className="card-body p-2">
             <h6 className="card-title mb-1" style={{ fontSize: "0.85rem" }}>
               {title}

@@ -1,7 +1,6 @@
 import Card from "./Card";
 
-export default function Section({ title, items = [], filterOptions = null, mediaType}) {
-
+export default function Section({ title, items = [], filterOptions = null, mediaType }) {
   return (
     <div className="mt-5">
       <div className="d-flex justify-content-between">
@@ -25,7 +24,13 @@ export default function Section({ title, items = [], filterOptions = null, media
       <div className="row g-3 g-lg-5 py-5 overflow-x-auto flex-nowrap" style={{ flexWrap: "nowrap" }}>
         {items.slice(0, 10).map((item) => (
           <div key={item.id} className="col-6 col-sm-4 col-md-3 col-lg-2" style={{ minWidth: "150px" }}>
-            <Card title={item.title || item.name} image={item.poster_path} year={(item.release_date || item.first_air_date || "").split("-")[0]} rating={(item.vote_average ?? 0).toFixed(1)} link={`#/${item.media_type || mediaType}/${item.id}`}   />
+            <Card
+              title={item.title || item.name}
+              image={item.poster_path}
+              year={(item.release_date || item.first_air_date || "").split("-")[0]}
+              rating={(item.vote_average ?? 0).toFixed(1)}
+              link={`#/${item.media_type || mediaType}/${item.id}`}
+            />
           </div>
         ))}
       </div>
