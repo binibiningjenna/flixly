@@ -47,6 +47,10 @@
   backdrop-filter: blur(6px);
 }
 
+.nav-link {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 .card {
   background-color: var(--lightColor);
 }
@@ -58,14 +62,14 @@
 .page-link:hover {
   color: var(--darkColor);
   background-color: var(--lightColor);
-  border-color: var(--darkColor); 
+  border-color: var(--darkColor);
 }
 
 .page-item.active .page-link {
   color: var(--lightColor) !important;
   background-color: var(--darkColor);
-  border-color: var(--lightColor) ; 
-  font-weight: bold;                        
+  border-color: var(--lightColor);
+  font-weight: bold;
 }
 
 /* Responsive headings */
